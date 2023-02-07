@@ -1,9 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Panel from './Panel';
 import { GoChevronDown } from 'react-icons/go';
 
 function Dropdown({ options, value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
+  const divEl = useRef();
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (!divEl.current) {
+        return;
+      }
+      // Si la referencia no es equivalente a donde hago click, que cierre el dropdown
+      if (!divEl.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handler, true);
+
+    return () => {
+      document.removeEeventListener('click', handler);
+    };
+  }, []);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -29,7 +48,7 @@ function Dropdown({ options, value, onChange }) {
   });
 
   return (
-    <div className="w-48 relative">
+    <div ref={divEl} className="w-48 relative">
       <Panel
         className="flex justify-between items-center cursor-pointer"
         onClick={handleClick}
