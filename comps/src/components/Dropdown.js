@@ -20,7 +20,7 @@ function Dropdown({ options, value, onChange }) {
     document.addEventListener('click', handler, true);
 
     return () => {
-      document.removeEeventListener('click', handler);
+      document.removeEventListener('click', handler);
     };
   }, []);
 
