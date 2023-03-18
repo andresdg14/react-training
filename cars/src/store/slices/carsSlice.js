@@ -1,6 +1,6 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-const carSlice = createSlice({
+const carsSlice = createSlice({
   name: 'cars',
   initialState: {
     searchTerm: '',
@@ -30,5 +30,5 @@ const carSlice = createSlice({
   },
 });
 
-export const { changeSearchTerm, addCar, removeCar } = carSlice.actions;
-export const carReducer = carSlice.reducer;
+export const { changeSearchTerm, addCar, removeCar } = carsSlice.actions;
+export const carsReducer = carsSlice.reducer;
