@@ -13,8 +13,6 @@ export const store = configureStore({
   },
 });
 
-setupListeners(store.dispatch);
-
 export * from './thunks/fetchUsers';
 export * from './thunks/addUser';
 export * from './thunks/removeUser';
